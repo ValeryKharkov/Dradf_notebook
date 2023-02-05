@@ -1,37 +1,39 @@
-# Андрей и кислота
+# Задача: Андрей и кислота
 n = int(input("Кол-во резервуаров: "))
-a = map(int, input("Кол-во литров во всех резервуарах по порядку (ввод через пробел): ").split())
+litre = map(int, input("Кол-во литров во всех резервуарах по порядку (ввод через пробел): ").split())
 
-initial_vulume = list(a)
-# min_a = min(initial_vulume)
-# max_a = max(initial_vulume)
-# set_ = len(set(initial_vulume))
-# count_min_a = 0
-# count_max_a = 0
-#
-# for i in initial_vulume:
-#     if i == min_a:
-#         count_min_a += 1
-#     elif i == max_a:
-#         count_max_a += 1
-#
-#
-#
-# if count_min_a + count_max_a != n or set_ == 1:
-#     k = -1
-# elif count_min_a + count_max_a == n:
-#     k = max_a - min_a
-#
-# print(k)
-
+initial_volume = list(litre)
 
 result = 0
-maximal = initial_vulume[0]
-for i in range(len(initial_vulume)):
-     maximal = max(initial_vulume[i], maximal)
-     if initial_vulume[i] < maximal:
-         answer = -1
-         break
-print(max(initial_vulume) - min(initial_vulume) if answer == 0 else answer)
+max_litre = initial_volume[0]
+
+for i in range(len(initial_volume)):
+    max_litre = max(initial_volume[i], max_litre)
+    if initial_volume[i] < max_litre:
+        result = -1
+        break
+
+if result == 0:
+    print(max(initial_volume) - min(initial_volume))
+else:
+    print(result)
+
+# решение из гугла, которое прошло проверку
+
+# n = int(input())  # 1 <= n <= 100 000 | Amount of tanks
+# Volumes = list(map(int, input().split()))  # Volume of each tank
+# answer = 0
+# maximal = Volumes[0]
+# for i in range(len(Volumes)):
+#     maximal = max(Volumes[i], maximal)
+#     if Volumes[i] < maximal:
+#         answer = -1
+#         break
+# if answer == 0:
+#     print(max(Volumes) - min(Volumes))
+# else:
+#     print('answer', answer)
+
+#print(max(Volumes) - min(Volumes) if answer == 0 else answer)
 
 
