@@ -1,4 +1,9 @@
-initial_volume = [1, 1, 5, 5, 5]
-answer = 0
-print(max(initial_volume) - min(initial_volume) if answer == 1 else answer)
+list_ = [2, 2, 2, 1, 1]
 
+
+def remove_max(list_arg):
+    list_arg.remove(max(list_arg))
+    print(list_arg)
+
+
+remove_max(list_)
