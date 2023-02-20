@@ -1,32 +1,55 @@
+# 11. Стек с защитой от ошибок
 stack = []
 command = ''
+result = []
 
 
-def stack_model(stack:list, command:str, n=None):
+def stack_model(stack: list, command: str, n:int=None):
     if command == 'push':
         stack.append(n)
-        print('ok')
+        result.append('ok')
+
     elif command == 'pop':
-        print(stack[-1])
-        stack.pop()
+        try:
+            stack[-1]
+        except IndexError:
+            result.append('error')
+        else:
+            result.append(stack[-1])
+            stack.pop()
+
     elif command == 'back':
-        print(stack[-1])
+        try:
+            stack[-1]
+        except IndexError:
+            result.append('error')
+        else:
+            result.append(stack[-1])
+
     elif command == 'size':
-        print(len(stack))
+        result.append(len(stack))
+
     elif command == 'clear':
         stack.clear()
-        print('ok')
+        result.append('ok')
+
     elif command == 'exit':
-        print('bye')
+        result.append('bye')
     return stack
 
 
+while command != 'exit':
+    input_data = input('Enter command: ').split()
+    if len(input_data) == 2:
+        command = input_data[0]
+        n = input_data[1]
+    elif len(input_data) == 1:
+        command = input_data[0]
+        n = None
+    else:
+        print('Неверный ввод данных')
+    stack_model(stack, command, n)
 
-enter_command, n = str(input('command: ')), input('n: ')
-while enter_command != 'exit':
-    stack_model(stack, enter_command, n)
 
-
-
-# back
-# exit
+for i in result:
+    print(i)
