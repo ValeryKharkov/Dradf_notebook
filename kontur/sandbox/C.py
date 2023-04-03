@@ -11,16 +11,16 @@ A, B = input().split('-')
 
 # Тестовый ввод данных
 # initial_dict = {
-#     'ZENIT': 65,
-#     'SOCHI': 56,
-#     'DINAMO': 53,
-#     'CSKA': 50,
-#     'KRASNODAR': 49,
-#     'LOKOMOTIV': 48,
-#     'AKHMAT': 41,
+#     'ZENIT': 75,
+#     'SOCHI': 66,
+#     'DINAMO': 63,
+#     'CSKA': 60,
+#     'KRASNODAR': 59,
+#     'LOKOMOTIV': 40,
+#     'AKHMAT': 40,
 # }
 #
-# A = 'KRASNODAR'
+# A = 'LOKOMOTIV'
 # B = 'AKHMAT'
 
 
@@ -50,7 +50,7 @@ def modification_dict(arg_dict: dict, arg_A: str, arg_B: str, result: str) -> di
 
 # Сортировка словаря
 def sorted_dict(arg_dict: dict) -> dict:
-    sorted_tuple = sorted(arg_dict.items(), key=lambda x: x[1], reverse=True)
+    sorted_tuple = sorted(arg_dict.items(), key=lambda kv: (-kv[1], kv[0]), reverse=False)
     return dict(sorted_tuple)
 
 
@@ -65,6 +65,7 @@ copy_dict = initial_dict.copy()
 for status in status_list:
     mod_dict = modification_dict(initial_dict, A, B, status)
     sort_dict = sorted_dict(mod_dict)
+
 
     # Возврат в словарь исходных значений
     initial_dict.clear()
