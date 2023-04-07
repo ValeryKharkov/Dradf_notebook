@@ -2,7 +2,7 @@
 import sqlite3 as sl
 
 # 2. Создание и соединение с базой данных
-con = sl.connect('test.db')
+con = sl.connect('test_db.db')
 
 cur = con.cursor()
 
@@ -73,10 +73,10 @@ orders = [
   ('00100', '2020-09-02', '00022', '226')
   ]
 
-# cur.executemany("INSERT INTO humans VALUES (?, ?, ?, ?);", humans)
-# con.commit()
-# cur.executemany("INSERT INTO orders VALUES (?, ?, ?, ?);", orders)
-# con.commit()
+cur.executemany("INSERT OR IGNORE INTO humans VALUES (?, ?, ?, ?);", humans)
+con.commit()
+cur.executemany("INSERT OR IGNORE INTO orders VALUES (?, ?, ?, ?);", orders)
+con.commit()
 
 # 5. Запросы на получение данных
 cur.execute("SELECT * FROM humans")
