@@ -3,8 +3,8 @@ import sqlite3 as sl
 
 # 2. Создание и соединение с базой данных
 con = sl.connect('test_db.db')
-
 cur = con.cursor()
+print("Подключен к SQLite")
 
 # 3. Создание таблиц базы данных
 cur.execute(""" CREATE TABLE IF NOT EXISTS humans(
